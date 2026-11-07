@@ -1,0 +1,710 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>PULSE — Reaction Game</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body data-theme="light">
+
+<!-- ==================== AUTH ==================== -->
+<main id="authScreen" class="screen active">
+
+  <div class="auth-layout">
+
+    <!-- LEFT SIDE -->
+    <div class="auth-intro">
+
+      <div class="brand">
+        <span class="brand-dot"></span>
+        PULSE
+      </div>
+
+      <div class="auth-heading">
+        <p class="eyebrow">WELCOME TO PULSE</p>
+
+        <h1>
+          How fast<br>
+          are you?
+        </h1>
+
+        <div class="auth-line">
+          ========
+        </div>
+
+        <p class="subtext">
+          A tiny collection of reaction challenges.
+        </p>
+      </div>
+
+    </div>
+
+
+    <!-- RIGHT SIDE -->
+    <div class="auth-card">
+
+      <div class="auth-tabs">
+
+        <div class="auth-tab-slider"></div>
+
+        <button
+          type="button"
+          id="loginTab"
+          class="auth-tab active"
+        >
+          Login
+        </button>
+
+        <button
+          type="button"
+          id="registerTab"
+          class="auth-tab"
+        >
+          Register
+        </button>
+
+      </div>
+
+
+      <form id="loginForm">
+
+        <div
+          id="usernameField"
+          class="auth-field hidden"
+        >
+          <input
+            id="usernameInput"
+            type="text"
+            placeholder="Choose a username"
+            maxlength="16"
+            autocomplete="username"
+          />
+        </div>
+
+
+        <input
+          id="emailInput"
+          type="email"
+          placeholder="Email"
+          autocomplete="email"
+          required
+        />
+
+
+        <input
+          id="passwordInput"
+          type="password"
+          placeholder="Password"
+          minlength="6"
+          autocomplete="current-password"
+          required
+        />
+
+
+        <button
+          class="primary-btn"
+          type="submit"
+        >
+          <span id="authButtonText">
+            Login
+          </span>
+
+          <span>→</span>
+        </button>
+
+      </form>
+
+
+      <p class="login-note">
+        Your account is saved securely.
+      </p>
+
+    </div>
+
+  </div>
+
+
+  <div class="auth-credit">
+    Made by rics'
+  </div>
+
+</main>
+
+
+  <!-- ==================== HOME ==================== -->
+  <main id="onboardingScreen" class="screen hidden">
+  <div class="onboarding-wrapper">
+    <p class="eyebrow">WELCOME TO PULSE</p>
+
+    <h1>Trust your<br><span>instinct.</span></h1>
+
+    <p class="onboarding-description">
+      Before you play, learn the five instincts.
+    </p>
+
+    <div id="onboardingContent"></div>
+
+    <div class="onboarding-footer">
+      <span id="onboardingProgress">01 / 05</span>
+
+      <button id="onboardingNext" class="primary-btn">
+        NEXT <span>→</span>
+      </button>
+    </div>
+  </div>
+</main>
+
+  <main id="homeScreen" class="screen hidden">
+
+    <nav class="navbar">
+      <div class="brand">
+        <span class="brand-dot"></span>
+        PULSE
+      </div>
+
+     <div class="nav-right">
+  <button id="profileButton" class="profile-btn">
+  <span class="profile-avatar"></span>
+
+  <span class="profile-button-info">
+    <span class="profile-button-label">PROFILE</span>
+    <span id="navUsername">guest</span>
+  </span>
+
+  <span class="profile-arrow">→</span>
+</button>
+
+  <button id="logoutButton" class="icon-btn">
+    Logout
+  </button>
+
+  <button id="themeButton" class="icon-btn">
+    ◐
+  </button>
+
+  <button id="musicButton" class="icon-btn">
+   ♫
+  </button>
+
+</div>
+    </nav>
+
+    <div class="daily-pulse-card">
+  <div class="daily-pulse-info">
+    <p class="eyebrow">DAILY PULSE</p>
+    <h2 id="dailyTitle">Today's Challenge.</h2>
+    <p id="dailyStatus">Loading today's challenge...</p>
+  </div>
+
+  <button id="dailyPlayButton" class="primary-btn">
+    <span id="dailyButtonText">Play Daily</span>
+    <span>→</span>
+  </button>
+</div>
+
+<!-- ==================== DAILY LEADERBOARD ==================== -->
+<section class="daily-leaderboard">
+
+  <div class="daily-leaderboard-heading">
+    <div>
+      <p class="eyebrow">TODAY</p>
+      <h2>Daily Leaderboard.</h2>
+    </div>
+
+    <span id="dailyLeaderboardDate"></span>
+  </div>
+
+  <div
+    id="dailyLeaderboardList"
+    class="daily-leaderboard-list"
+  ></div>
+
+</section>
+
+    <section class="hero">
+
+      <p class="eyebrow">A GAME ABOUT REACTION</p>
+
+      <h1>
+        Trust your<br>
+        <span>instinct.</span>
+      </h1>
+
+      <p class="hero-description">
+        Five rounds. Different challenges.
+        One final score.
+      </p>
+
+      <div class="hero-buttons">
+        <button id="playButton" class="primary-btn large">
+          PLAY
+          <span>→</span>
+        </button>
+
+        <button id="leaderboardButton" class="secondary-btn">
+          LEADERBOARD
+        </button>
+      </div>
+
+    </section>
+
+    <footer>
+      Made by rics'
+    </footer>
+  </main>
+
+
+  <!-- ==================== LEADERBOARD ==================== -->
+  <main id="leaderboardScreen" class="screen hidden">
+
+    <nav class="navbar">
+      <button class="back-btn" id="backFromLeaderboard">
+        ← Back
+      </button>
+
+      <div class="brand">
+        <span class="brand-dot"></span>
+        PULSE
+      </div>
+
+      <div class="nav-spacer"></div>
+    </nav>
+
+    <section class="leaderboard">
+
+      <p class="eyebrow">GLOBAL</p>
+      <h1>Leaderboard</h1>
+
+      <div class="leaderboard-list" id="leaderboardList"></div>
+
+    </section>
+
+  </main>
+
+ <!-- ==================== PROFILE ==================== -->
+<main id="profileScreen" class="screen hidden">
+
+  <nav class="navbar">
+
+    <button class="back-btn" id="backFromProfile">
+      ← Back
+    </button>
+
+    <div class="brand">
+      <span class="brand-dot"></span>
+      PULSE
+    </div>
+
+    <div class="nav-spacer"></div>
+
+  </nav>
+
+
+  <section class="profile">
+
+    <p class="eyebrow">YOUR PROFILE</p>
+
+    <h1>
+      Your <span>Profile.</span>
+    </h1>
+
+
+    <div class="profile-username">
+      <span>PLAYER</span>
+      <strong id="profileUsername">—</strong>
+    </div>
+
+
+    <div class="player-stats">
+
+      <div class="stats-heading">
+        <p class="eyebrow">YOUR STATS</p>
+        <h2>Player Stats.</h2>
+      </div>
+
+
+      <div class="stats-grid">
+
+        <div class="stat-item">
+          <span>GAMES PLAYED</span>
+          <strong id="gamesPlayed">0</strong>
+        </div>
+
+        <div class="stat-item">
+          <span>BEST SCORE</span>
+          <strong id="bestScore">0</strong>
+        </div>
+
+        <div class="stat-item">
+          <span>BEST ACCURACY</span>
+          <strong id="bestAccuracy">0%</strong>
+        </div>
+
+        <div class="stat-item">
+          <span>FASTEST REACTION</span>
+          <strong id="fastestReaction">—</strong>
+        </div>
+
+        <div class="stat-item">
+          <span>AVERAGE SCORE</span>
+          <strong id="averageScore">0</strong>
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+</main>
+
+  <!-- ==================== COUNTDOWN ==================== -->
+  <main id="countdownScreen" class="screen hidden">
+
+    <div class="countdown-wrapper">
+      <p id="roundLabel">GET READY</p>
+      <div id="countdownNumber">3</div>
+    </div>
+
+  </main>
+
+
+  <!-- ==================== GAME ==================== -->
+  <main id="gameScreen" class="screen hidden">
+
+    <header class="game-header">
+
+      <div>
+        <p class="eyebrow" id="gameRound">ROUND 01</p>
+        <h2 id="gameTitle">TYPE</h2>
+      </div>
+
+      <div class="game-stats">
+        <div>
+          <span>SCORE</span>
+          <strong id="score">0</strong>
+        </div>
+
+        <div>
+          <span>COMBO</span>
+          <strong id="combo">x0</strong>
+        </div>
+
+        <div>
+          <span>TIME</span>
+          <strong id="timer">6.0</strong>
+        </div>
+      </div>
+
+    </header>
+
+
+    <!-- ROUND CONTENT -->
+    <section class="game-area">
+
+      <!-- TYPE -->
+      <div id="typeRound" class="round-content">
+
+        <p class="instruction">
+          Type the word as fast as you can.
+        </p>
+
+        <div id="typeWord" class="big-word">
+          pulse
+        </div>
+
+        <input
+          id="typeInput"
+          class="game-input"
+          type="text"
+          autocomplete="off"
+          spellcheck="false"
+          placeholder="type here..."
+        />
+
+      </div>
+
+
+      <!-- REACT -->
+      <div id="reactRound" class="round-content hidden-round">
+
+        <p class="instruction">
+          Click the circle.
+        </p>
+
+        <div id="reactionTarget" class="reaction-target"></div>
+
+      </div>
+
+
+      <!-- MEMORY -->
+      <div id="memoryRound" class="round-content hidden-round">
+
+        <p class="instruction">
+          Remember the sequence.
+        </p>
+
+        <div id="memorySequence" class="memory-sequence"></div>
+
+        <div class="memory-input-row">
+  <input id="memoryInput" class="game-input" type="text" autocomplete="off" spellcheck="false" placeholder="enter sequence..." />
+  <button id="memorySubmit" class="primary-btn memory-submit" type="button">
+    ENTER →
+  </button>
+</div>
+
+      </div>
+
+
+      <!-- DON'T CLICK -->
+      <div id="dontClickRound" class="round-content hidden-round">
+
+        <p class="instruction">
+          Click the <b>white</b> circle. Avoid the dark one.
+        </p>
+
+        <div id="dontClickArea" class="dont-click-area"></div>
+
+      </div>
+
+
+      <!-- CHAOS -->
+      <div id="chaosRound" class="round-content hidden-round">
+
+        <p class="instruction" id="chaosInstruction">
+          Follow the instruction.
+        </p>
+
+        <div id="chaosTarget" class="chaos-target">
+          GO
+        </div>
+
+      </div>
+
+    </section>
+
+  </main>
+
+
+  <!-- ==================== RESULT ==================== -->
+<main id="resultScreen" class="screen hidden">
+
+  <div class="result-wrapper">
+
+    <p class="eyebrow">RUN COMPLETE</p>
+
+    <h1>Your Pulse<br><span>Score.</span></h1>
+
+    <div class="final-score">
+      <span id="finalScore">0</span>
+      <small>PTS</small>
+    </div>
+
+    <p id="personalBest" class="personal-best hidden">
+      NEW PERSONAL BEST
+    </p>
+
+    <div class="result-grid">
+
+      <div>
+        <span>ACCURACY</span>
+        <strong id="finalAccuracy">0%</strong>
+      </div>
+
+      <div>
+        <span>REACTION</span>
+        <strong id="finalReaction">—</strong>
+      </div>
+
+      <div>
+        <span>COMBO</span>
+        <strong id="finalCombo">x0</strong>
+      </div>
+
+      <div>
+        <span>BEST ROUND</span>
+        <strong id="bestRound">—</strong>
+      </div>
+
+    </div>
+
+
+    <!-- RESULT ACTIONS -->
+    <div class="result-buttons">
+
+      <button id="shareResultButton" class="primary-btn large">
+        SHARE RESULT
+        <span>↗</span>
+      </button>
+
+      <button id="saveResultButton" class="secondary-btn">
+        SAVE RESULT
+      </button>
+
+      <button id="whatsappResultButton" class="secondary-btn">
+        WHATSAPP
+      </button>
+
+      <button id="playAgainButton" class="secondary-btn">
+        PLAY AGAIN
+      </button>
+
+      <button id="resultLeaderboardButton" class="secondary-btn">
+        LEADERBOARD
+      </button>
+
+    </div>
+
+    <p class="signature">Made by rics'</p>
+
+  </div>
+
+
+  <!-- ==================== SHARE CARD ==================== -->
+  <div id="resultShareCard" class="result-share-card">
+
+    <div class="share-card-top">
+      <div class="share-card-brand">
+        <span class="brand-dot"></span>
+        PULSE
+      </div>
+
+      <span class="share-card-label">
+        RUN COMPLETE
+      </span>
+    </div>
+
+
+    <div class="share-card-main">
+
+      <p class="share-card-eyebrow">
+        HOW FAST ARE YOU?
+      </p>
+
+      <div class="share-card-score">
+        <span id="shareCardScore">0</span>
+        <small>PTS</small>
+      </div>
+
+    </div>
+
+
+    <div class="share-card-stats">
+
+      <div>
+        <span>ACCURACY</span>
+        <strong id="shareCardAccuracy">0%</strong>
+      </div>
+
+      <div>
+        <span>REACTION</span>
+        <strong id="shareCardReaction">—</strong>
+      </div>
+
+      <div>
+        <span>BEST ROUND</span>
+        <strong id="shareCardBestRound">—</strong>
+      </div>
+
+    </div>
+
+
+    <div class="share-card-bottom">
+
+  <span id="shareCardUsername">
+    player
+  </span>
+
+  <span id="shareCardDate">
+    OCT 20, 2026
+  </span>
+
+  <span>Made by rics'</span>
+
+</div>
+
+  </div>
+
+</main>
+
+
+<!-- ==================== MUSIC PANEL ==================== -->
+<aside id="musicPanel" class="music-panel">
+
+  <div class="music-panel-header">
+    <span>Music</span>
+    <button id="closeMusic">×</button>
+  </div>
+
+  <div class="music-now-playing">
+    <div class="music-cover">
+      ♫
+    </div>
+
+    <div class="music-info">
+      <strong id="musicTitle">Not Playing</strong>
+      <span id="musicArtist">PULSE RADIO</span>
+    </div>
+  </div>
+
+  <div class="music-controls">
+    <button id="musicPrevious">←</button>
+    <button id="musicPlay">▶</button>
+    <button id="musicNext">→</button>
+  </div>
+
+  <div class="music-search">    
+  <input
+    id="musicSearchInput"
+    type="text"
+    placeholder="Search a song..."
+  />
+
+  <button
+  id="musicSearchButton"
+  type="button"
+>
+    Search
+  </button>
+</div>
+    <div id="musicSearchResults"></div>
+
+</aside>
+
+  <!-- ==================== THEME PANEL ==================== -->
+  <aside id="themePanel" class="theme-panel">
+
+    <div class="theme-panel-header">
+      <span>Appearance</span>
+      <button id="closeTheme">×</button>
+    </div>
+
+    <button class="theme-option" data-theme-choice="light">
+      <span class="theme-preview light-preview"></span>
+      Light
+    </button>
+
+    <button class="theme-option" data-theme-choice="dark">
+      <span class="theme-preview dark-preview"></span>
+      Dark
+    </button>
+
+    <button class="theme-option" data-theme-choice="paper">
+      <span class="theme-preview paper-preview"></span>
+      Paper
+    </button>
+
+    <button class="theme-option" data-theme-choice="midnight">
+      <span class="theme-preview midnight-preview"></span>
+      Midnight
+    </button>
+
+  </aside>
+
+  <script src="https://unpkg.com/@supabase/supabase-js@2"></script>
+  <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
