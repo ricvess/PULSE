@@ -1,2 +1,2 @@
 # PULSE
-Test your reflects.
+A tiny collection of reaction challenges.
